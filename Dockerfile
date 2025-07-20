@@ -11,5 +11,5 @@ FROM alpine:3.22
 EXPOSE 8080
 
 WORKDIR /app
-COPY --from=builder /app/target/release/kubesend /app/
+COPY --from=builder /app/target/release/kubesend .
 CMD ["./kubesend"]

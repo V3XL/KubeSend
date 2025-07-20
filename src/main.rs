@@ -14,7 +14,7 @@ async fn index(req: HttpRequest) -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let config = Config::from_file("config.yaml").expect("Failed to load config.yaml");
+    let config = Config::from_file("config/config.yaml").expect("Failed to load config.yaml");
 
     HttpServer::new(move || {
         App::new()
