@@ -22,7 +22,7 @@ async fn main() -> std::io::Result<()> {
             .service(web::resource("/").to(index))
             .route("/smtp/send", web::post().to(send_email_endpoint))
     })
-    .bind("127.0.0.1:8080")?
+    .bind("0.0.0.0:8080")?
     .run()
     .await
 }
