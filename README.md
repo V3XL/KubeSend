@@ -32,7 +32,7 @@ Note: The following features are not included:
 
 Create the config.yaml file (see config.yaml.example), then run with Docker for testing.
 ```bash
-docker run --rm -it -p 8080:8080 -v /path/to/config:/app/config kubesend
+docker run --rm -it -p 8080:8080 -v /path/to/config:/app/config v3xl/kubesend
 ```
 
 ## Usage
