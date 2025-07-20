@@ -1,21 +1,28 @@
 mod utils;
+mod handlers;
+mod services;
+mod models;
+mod config;
 
-use utils::environment::get_env;
-use utils::file_helper::read_file;
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use handlers::message_handler::send_email_endpoint;
+use crate::config::Config;
 
+async fn index(req: HttpRequest) -> impl Responder {
+    format!("Hello _{}!_!", req.match_info().get("name").unwrap_or("World"))
+}
 
-//Features not adding/out of scope for this project:
-// - Cronjobs and scheduling tasks
-// - 
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    let config = Config::from_file("config.yaml").expect("Failed to load config.yaml");
 
-//Features that will be added:
-//- Different types of notifications (email, telegram, discord, etc)
-//- Message templates, and persisting to database
-// -Queuing system, retries, and error handling
-
-
-
-fn main() {
-    println!("{}", get_env("HOME"));
-    println!("{}", read_file("my_file.txt"));
+    HttpServer::new(move || {
+        App::new()
+            .app_data(web::Data::new(config.clone()))
+            .service(web::resource("/").to(index))
+            .route("/send-email", web::post().to(send_email_endpoint))
+    })
+    .bind("127.0.0.1:8080")?
+    .run()
+    .await
 }
