@@ -2,13 +2,13 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "dev" ] 
+    branches: [ "main" ] 
     paths:
-      - 'Cargo.toml'  # Only run when Cargo.toml changes
+      - 'Cargo.toml'  
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "main" ]
     paths:
-      - 'Cargo.toml'  # Only run when Cargo.toml changes
+      - 'Cargo.toml'
 
 jobs:
   check-version:
@@ -33,13 +33,13 @@ jobs:
       - name: Checkout previous code (main branch)
         uses: actions/checkout@v4
         with:
-          ref: dev
-          path: dev
+          ref: main
+          path: main
           fetch-depth: 1
 
       - name: Get previous version
         id: previous_version
-        working-directory: dev
+        working-directory: main
         run: |
           PREVIOUS_VERSION=$(grep -m1 '^version = ' Cargo.toml | cut -d '"' -f2)
           echo "version=$PREVIOUS_VERSION" >> $GITHUB_OUTPUT
