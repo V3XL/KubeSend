@@ -14,31 +14,8 @@
 		"vscode": {
 			"settings": {},
 			"extensions": [
-				"streetsidesoftware.code-spell-checker",
-				"ahmadawais.shades-of-purple",
-				"DaltonMenezes.aura-theme"
+				"streetsidesoftware.code-spell-checker"
 			]
 		}
-	},
-
-	// Use 'portsAttributes' to set default properties for specific forwarded ports. 
-	// More info: https://containers.dev/implementors/json_reference/#port-attributes
-	"portsAttributes": {
-		"5000": {
-			"label": "Hello Remote World",
-			"onAutoForward": "notify"
-		},
-		"5001": {
-			"protocol": "https"
-		}
 	}
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5001],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "dotnet restore",
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
 }
