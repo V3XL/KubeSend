@@ -39,7 +39,7 @@ jobs:
 
       - name: Get previous version
         id: previous_version
-        working-directory: main
+        working-directory: dev
         run: |
           PREVIOUS_VERSION=$(grep -m1 '^version = ' Cargo.toml | cut -d '"' -f2)
           echo "version=$PREVIOUS_VERSION" >> $GITHUB_OUTPUT
