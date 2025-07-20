@@ -1,0 +1,10 @@
+smtp:
+  host: "smtp.example.com"
+  port: 465
+  username: "kubesend@example.com"
+  password: "abc123"
+  use_tls: true
+
+general:
+  log_level: "info" # Can be "debug", "info", "warn", "error"
+  notification_retries: 3
