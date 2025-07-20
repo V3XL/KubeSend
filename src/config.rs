@@ -12,11 +12,6 @@ pub struct SmtpConfig {
 }
 
 #[derive(Debug, Deserialize, Clone)]
-pub struct DiscordConfig {
-    pub webhook_url: String,
-}
-
-#[derive(Debug, Deserialize, Clone)]
 pub struct GeneralConfig {
     pub log_level: String,
     pub notification_retries: u8,
@@ -25,7 +20,6 @@ pub struct GeneralConfig {
 #[derive(Debug, Deserialize, Clone)]
 pub struct Config {
     pub smtp: SmtpConfig,
-    pub discord: DiscordConfig,
     pub general: GeneralConfig,
 }
 

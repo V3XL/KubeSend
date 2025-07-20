@@ -20,7 +20,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(web::Data::new(config.clone()))
             .service(web::resource("/").to(index))
-            .route("/send-email", web::post().to(send_email_endpoint))
+            .route("/smtp/send", web::post().to(send_email_endpoint))
     })
     .bind("127.0.0.1:8080")?
     .run()
