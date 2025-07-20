@@ -1,14 +1,35 @@
 # KubeSend
 
-Features that will be added:
-[ ] Different types of notifications:
-    [x] SMTP
-    [ ] Telegram
-    [ ] Discord
-[ ] Message templates
-[ ] Message queuing
-[ ] Message Retries
+A flexible notification service for Kubernetes environments.
 
+## Overview
 
-Features that will not be added:
- - Cronjobs and scheduling tasks
+KubeSend provides a simple way to send notifications from your Kubernetes environment through various channels. It's designed to be lightweight, reliable, and easy to integrate with your existing workflows.
+
+## Features
+
+### Implemented 
+
+- **Notification Channels**
+  - [x] SMTP (Email)
+
+### Coming Soon 
+
+- **Additional Notification Channels**
+  - [ ] Telegram
+  - [ ] Discord
+- **Enhanced Functionality**
+  - [ ] Message templates
+  - [ ] Message queuing
+  - [ ] Message retries
+
+### Out of Scope 
+
+The following features are intentionally not included:
+- Cronjobs and scheduling tasks
+
+## Installation
+
+```bash
+# Installation instructions coming soon
+```
