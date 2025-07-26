@@ -3,6 +3,16 @@ entries:
   kubesend:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2025-07-26T08:48:14.028438675Z"
+    description: A Helm chart for Kubernetes
+    digest: 61a5938f447ed4205d577b978e26ae586020374d3a66611410bb96e2828fe470
+    name: kubesend
+    type: application
+    urls:
+    - https://github.com/V3XL/KubeSend/releases/download/kubesend-0.1.2/kubesend-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2025-07-26T08:44:37.894695842Z"
     description: A Helm chart for Kubernetes
     digest: cdd30ad753e5c0c168506b4344999e6de2d4552cd366cfa33acaea0b00e469da
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/V3XL/KubeSend/releases/download/kubesend-0.1.1/kubesend-0.1.1.tgz
     version: 0.1.1
-generated: "2025-07-26T08:44:37.894701753Z"
+generated: "2025-07-26T08:48:14.028447192Z"
