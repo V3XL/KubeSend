@@ -3,31 +3,51 @@ kind: Deployment
 metadata:
   name: {{ include "kubesend.fullname" . }}
   labels:
-    app: {{ include "kubesend.name" . }}
+    app: kubesend
 spec:
-  # Simple replicas configuration
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.autoscaling.minReplicas | default 1 }}
   selector:
     matchLabels:
-      app: {{ include "kubesend.name" . }}
+      app: kubesend
+  strategy:
+    type: RollingUpdate  
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0      
   template:
     metadata:
       labels:
-        app: {{ include "kubesend.name" . }}
+        app: kubesend
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+        - name: kubesend
+          image: "v3xl/kubesend:{{ default .Chart.AppVersion }}"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - -L
+                - http://localhost:8080/          
+            initialDelaySeconds: 5
+            periodSeconds: 5                  
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 8080
               protocol: TCP
-          # Basic resource requests and limits
           resources:
             requests:
-              cpu: {{ .Values.resources.requests.cpu | default "100m" }}
-              memory: {{ .Values.resources.requests.memory | default "128Mi" }}
+              cpu: {{ .Values.resources.requests.cpu | default "50m" }}
+              memory: {{ .Values.resources.requests.memory | default "32Mi" }}
             limits:
-              cpu: {{ .Values.resources.limits.cpu | default "200m" }}
-              memory: {{ .Values.resources.limits.memory | default "256Mi" }}
+              cpu: {{ .Values.resources.limits.cpu | default "100m" }}
+              memory: {{ .Values.resources.limits.memory | default "128Mi" }}
+          volumeMounts:
+          - name: config-volume
+            mountPath: /app/config/config.yaml
+            subPath: config.yaml
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ include "kubesend.fullname" . }}-config
