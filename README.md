@@ -28,7 +28,34 @@ This was made mainly for the purpose of learning Rust. If this is a project whic
 Note: The following features are not included:
 - Cronjobs and scheduling tasks
 
-## Installation
+## Install with Helm
+
+Add the KubeSend repository.
+```bash
+# Add the KubeSend Helm repository
+helm repo add kubesend https://v3xl.github.io/KubeSend/
+
+# Update your Helm repositories
+helm repo update
+```
+
+
+Modify the values.yaml according to your requirements, most importantly specifying your SMTP settings.
+
+```bash
+helm show values kubesend/kubesend > values.yaml
+```
+
+
+Install KubeSend using your modified values
+```bash
+helm install kubesend kubesend/kubesend -f values.yaml
+```
+
+
+
+
+## Docker Install (For basic testing)
 
 Create the config.yaml file (see config.yaml.example), then run with Docker for testing.
 ```bash
@@ -40,7 +67,7 @@ docker run --rm -it -p 8080:8080 -v /path/to/config:/app/config v3xl/kubesend
 ### Send an Email
 The below shows a CURL example.
 ```bash
-curl -X POST http://kubesender:8080/smtp/send \
+curl -X POST http://kubesender/smtp/send \
   -H "Content-Type: application/json" \
   -d '{
     "to": [
