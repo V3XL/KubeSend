@@ -38,6 +38,11 @@ jobs:
         with:
           # Upload only our helm charts directory
           path: './helm-charts'
+          # Use a unique name for the artifact
+          name: 'helm-charts-artifact'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Use the same unique name from above
+          artifact_name: 'helm-charts-artifact'
