@@ -14,8 +14,8 @@ target
 **/mutants.out*/
 
 #Config files
-*.yaml
-*.yml
+./*.yaml
+./*.yml
 .vscode
 config
 
