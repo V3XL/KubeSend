@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "kubesend.fullname" . }}
+  name: {{ include "kubesend.name" . }}-deployment
   labels:
     app: kubesend
 spec:
@@ -50,4 +50,4 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: {{ include "kubesend.fullname" . }}-config
+          name: {{ include "kubesend.name" . }}-config

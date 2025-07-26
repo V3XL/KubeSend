@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name | default (include "kubesend.fullname" .) }}
+  name: {{ include "kubesend.name" . }}-service
 spec:
   selector:
-    app: kubesend
+    app: {{ include "kubesend.name" . }}-service
   ports:
     - protocol: TCP
       port: {{ .Values.service.port | default 80 }}
