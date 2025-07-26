@@ -24,12 +24,9 @@ spec:
           image: "v3xl/kubesend:{{ default .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
           readinessProbe:
-            exec:
-              command:
-                - curl
-                - -f
-                - -L
-                - http://localhost:8080/          
+            httpGet:
+              path: /
+              port: 8080
             initialDelaySeconds: 5
             periodSeconds: 5                  
           ports:
