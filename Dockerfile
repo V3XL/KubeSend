@@ -10,7 +10,7 @@ FROM debian:bookworm-slim
 
 # Install curl
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates && \
+    apt-get install -y curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
