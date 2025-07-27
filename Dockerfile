@@ -8,14 +8,6 @@ RUN cargo build --release
 # Runtime stage
 FROM debian:bookworm-slim
 
-# Install curl
-RUN apt-get update && \
-    apt-get install -y curl && \
-    which curl && \
-    curl --version && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 EXPOSE 8080
 
 WORKDIR /app
