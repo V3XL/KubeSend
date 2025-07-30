@@ -1,6 +1,5 @@
 # KubeSend
-
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/kubesend)](https://artifacthub.io/packages/search?repo=kubesend)
+[![Docker Pulls](https://img.shields.io/docker/pulls/v3xl/kubesend.svg)](https://hub.docker.com/r/v3xl/kubesend/) [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/kubesend)](https://artifacthub.io/packages/search?repo=kubesend)
 
 A flexible notification service for Kubernetes environments.
 
